@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         button_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, gryffindor.class);
+                Intent i = new Intent(MainActivity.this, DatosHabitantes.class);
                 startActivity(i);
                 finish();
             }

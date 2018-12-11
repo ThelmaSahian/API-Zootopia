@@ -1,6 +1,9 @@
 package com.example.brian.magichouses.Models;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +13,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.brian.magichouses.API.Deserializer.Estudiante;
+import com.example.brian.magichouses.API.Deserializer.Habitante;
+import com.example.brian.magichouses.Activities.DatoIndividual;
+import com.example.brian.magichouses.Activities.DatosHabitantes;
 import com.example.brian.magichouses.R;
 
 
@@ -18,7 +23,7 @@ import java.util.ArrayList;
 
 public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.ViewHolder>{
 
-    private ArrayList<Estudiante> dataset;
+    private ArrayList<Habitante> dataset;
     private Context context;
 
     public ListaAdapter(Context context){
@@ -27,17 +32,17 @@ public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.ViewHolder>{
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_estudiante, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_habitante, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Estudiante estudiante = dataset.get(position);
-        holder.nombreTextView.setText(estudiante.getFirst());
+        Habitante habitante = dataset.get(position);
+        holder.nombreTextView.setText(habitante.getFirst() + " " + habitante.getLast());
 
         Glide.with(context)
-                .load(estudiante.getImage())
+                .load(habitante.getImage())
                 .centerCrop()
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -49,8 +54,8 @@ public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.ViewHolder>{
         return dataset.size();
     }
 
-    public void adicionarListaEstudiantes(ArrayList<Estudiante> listaEstudiantes){
-        dataset.addAll(listaEstudiantes);
+    public void adicionarListaHabitantes(ArrayList<Habitante> listaHabitantes){
+        dataset.addAll(listaHabitantes);
         notifyDataSetChanged();
     }
 
@@ -63,6 +68,8 @@ public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.ViewHolder>{
 
                 fotoImageView = (ImageView) itemView.findViewById(R.id.fotoImageView);
                 nombreTextView = (TextView) itemView.findViewById(R.id.nombreTextView);
+
             }
     }
+
 }

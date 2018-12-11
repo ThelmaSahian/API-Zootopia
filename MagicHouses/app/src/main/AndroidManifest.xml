@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    <activity android:name=".Activities.gryffindor"></activity>
+        <activity android:name=".Activities.DatosHabitantes" />
+        <activity android:name=".Activities.DatoIndividual"></activity>
     </application>
 
 </manifest>
