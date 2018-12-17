@@ -5,6 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.Toast;
 
 import com.example.brian.zootopia.API.ApiServices.ZootopiaServices;
 import com.example.brian.zootopia.API.Deserializer.Habitante;
@@ -21,7 +26,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class DatosHabitantes extends AppCompatActivity{
+public class DatosHabitantes extends AppCompatActivity  {
 
     public static final String TAG = "Zootopia";
     public static final String BASE_URL = "https://zootopia-api.herokuapp.com/api/";
@@ -33,6 +38,7 @@ public class DatosHabitantes extends AppCompatActivity{
     private boolean aptoParaCargar;
     private Call<Habitante> habitantesCall;
     //ArrayList<Estudiante> listaEstudiante;
+    private Habitante habitante;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +55,71 @@ public class DatosHabitantes extends AppCompatActivity{
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
         obtenerDatos();
+
+        final GestureDetector mGestureDetector = new GestureDetector(DatosHabitantes.this, new GestureDetector.OnGestureListener() {
+            @Override
+            public boolean onDown(MotionEvent motionEvent) {
+                return true;
+            }
+
+            @Override
+            public void onShowPress(MotionEvent motionEvent) {
+
+            }
+
+            @Override
+            public boolean onSingleTapUp(MotionEvent motionEvent) {
+                return false;
+            }
+
+            @Override
+            public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+                return false;
+            }
+
+            @Override
+            public void onLongPress(MotionEvent motionEvent) {
+
+            }
+
+            @Override
+            public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+                return false;
+            }
+
+        });
+
+        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+                try{
+
+                    View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
+
+                    if(child != null  && mGestureDetector.onTouchEvent(e)){
+
+                        int position = recyclerView.getChildAdapterPosition(child);
+                        Toast.makeText(DatosHabitantes.this, "El habitante seleccionado es " + habitante.getFirst() + " " + habitante.getLast(), Toast.LENGTH_SHORT).show();
+
+                        return true;
+                    }
+                }catch(Exception ex){
+                    ex.printStackTrace();
+                }
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
     }
 
 

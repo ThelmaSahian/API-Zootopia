@@ -1,5 +1,7 @@
 package com.example.brian.zootopia.API.Deserializer;
 
+import android.widget.Adapter;
+
 public class Habitante {
 
 
