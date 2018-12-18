@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.brian.zootopia.API.ApiServices.ZootopiaServices;
 import com.example.brian.zootopia.API.Deserializer.Habitante;
+import com.example.brian.zootopia.Models.LisAdapterIndividual;
 import com.example.brian.zootopia.Models.ListaAdapter;
 
 import com.example.brian.zootopia.Models.ZootopiaResponse;
@@ -39,6 +40,7 @@ public class DatosHabitantes extends AppCompatActivity  {
     private Call<Habitante> habitantesCall;
     //ArrayList<Estudiante> listaEstudiante;
     private Habitante habitante;
+    private LisAdapterIndividual lisAdapterIndividual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,9 @@ public class DatosHabitantes extends AppCompatActivity  {
         recyclerView.setHasFixedSize(true);
         final GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);
+
+        lisAdapterIndividual = new LisAdapterIndividual(this);
+
 
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -100,7 +105,8 @@ public class DatosHabitantes extends AppCompatActivity  {
                     if(child != null  && mGestureDetector.onTouchEvent(e)){
 
                         int position = recyclerView.getChildAdapterPosition(child);
-                        Toast.makeText(DatosHabitantes.this, "El habitante seleccionado es " + habitante.getFirst() + " " + habitante.getLast(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(DatosHabitantes.this, "El habitante seleccionado es " + habitante.getFirst() + " " + habitante.getLast(), Toast.LENGTH_SHORT).show();
+                        setContentView(R.layout.activity_individual);
 
                         return true;
                     }
@@ -121,6 +127,11 @@ public class DatosHabitantes extends AppCompatActivity  {
             }
         });
     }
+
+   /* protected void onCreate2(Bundle saveInstance){
+        super.onCreate(saveInstance);
+        setContentView(R.layout.activity_individual);
+    }*/
 
 
    private void obtenerDatos(){

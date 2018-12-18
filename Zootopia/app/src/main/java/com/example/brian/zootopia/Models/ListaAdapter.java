@@ -64,17 +64,13 @@ public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder{
             private ImageView fotoImageView;
             private TextView nombreTextView;
-        private ImageView imageInfo;
-        private TextView textInfo;
-
             public ViewHolder(View itemView){
                 super(itemView);
 
                 fotoImageView = (ImageView) itemView.findViewById(R.id.fotoImageView);
                 nombreTextView = (TextView) itemView.findViewById(R.id.nombreTextView);
 
-                imageInfo = (ImageView)itemView.findViewById(R.id.imageInfo);
-                textInfo = (TextView)itemView.findViewById(R.id.textInfo);
+
 
             }
     }
