@@ -54,7 +54,6 @@ public class DatosHabitantes extends AppCompatActivity  {
         final GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);
 
-        lisAdapterIndividual = new LisAdapterIndividual(this);
 
 
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
@@ -134,7 +133,7 @@ public class DatosHabitantes extends AppCompatActivity  {
     }*/
 
 
-   private void obtenerDatos(){
+   public void obtenerDatos(){
        ZootopiaServices service = retrofit.create(ZootopiaServices.class);
        Call<ZootopiaResponse> zResponseCall = service.getListaHabitantes();
 
@@ -146,6 +145,7 @@ public class DatosHabitantes extends AppCompatActivity  {
                 ZootopiaResponse zResponse = response.body();
                 ArrayList<Habitante> listaHabitante = zResponse.getData();
                 listaHabitantesAdapter.adicionarListaHabitantes(listaHabitante);
+                //lisAdapterIndividual.adicionarListaIndividual(listaHabitante);
 
             }
 

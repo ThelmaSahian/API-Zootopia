@@ -40,10 +40,6 @@ public class LisAdapterIndividual extends RecyclerView.Adapter<LisAdapterIndivid
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imageInfo);
-
-
-
-
     }
 
     @Override
