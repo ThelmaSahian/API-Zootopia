@@ -49,7 +49,7 @@ public class Habitante {
     }
 
     public String checarId() {
-        /*if(id == 1){
+        if(id == 1){
             String image_0 = "http://img08.deviantart.net/8c0b/i/2016/084/0/f/zootopia___nick_wilde_by_ruby__art-d9weg5a.jpg";
             this.image = image_0;
         }
@@ -74,7 +74,7 @@ public class Habitante {
 
 
 
-    }*/
+
         return checarId();
     }
 

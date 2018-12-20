@@ -59,6 +59,7 @@ public class DatosHabitantes extends AppCompatActivity  {
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
         obtenerDatos();
 
         final GestureDetector mGestureDetector = new GestureDetector(DatosHabitantes.this, new GestureDetector.OnGestureListener() {
@@ -127,10 +128,6 @@ public class DatosHabitantes extends AppCompatActivity  {
         });
     }
 
-   /* protected void onCreate2(Bundle saveInstance){
-        super.onCreate(saveInstance);
-        setContentView(R.layout.activity_individual);
-    }*/
 
 
    public void obtenerDatos(){

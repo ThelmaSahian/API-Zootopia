@@ -49,14 +49,14 @@ public class Individual extends AppCompatActivity {
 
 
 
-        obtenerDatos();
+        //obtenerDatos();
 
 
     }
 
 
 
-    public void obtenerDatos(){
+    /*public void obtenerDatos(){
         ZootopiaServices service = retrofit.create(ZootopiaServices.class);
         final Call<ZootopiaResponse> zResponseCall = service.getListaHabitantes();
 
@@ -69,7 +69,7 @@ public class Individual extends AppCompatActivity {
                 ArrayList<Habitante> listaHabitante = zResponse.getData();
 
                 textInfo.setText(habitante.getFirst() + " " + habitante.getLast());
-                Picasso.get().load(habitante.getImage());
+                Picasso.get().load(habitante.checarId());
                 //lisAdapterIndividual.adicionarListaIndividual(listaHabitante);
 
             }
@@ -79,5 +79,5 @@ public class Individual extends AppCompatActivity {
                 //cargar = true;
                 Log.e(TAG, "onFailure: " + t.getMessage());
             }});
-    }
+    }*/
 }
