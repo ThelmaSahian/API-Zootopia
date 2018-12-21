@@ -28,12 +28,13 @@ public class Individual extends AppCompatActivity {
     ImageView imageInfo = findViewById(R.id.imageInfo);
     TextView textInfo = findViewById(R.id.textInfo);
 
+
+    private static String TAG = "Zootopia";
+
+    private Habitante habitante;
     private LisAdapterIndividual lisAdapterIndividual;
     private Retrofit retrofit;
     private RecyclerView recyclerView;
-    private static String TAG = "Zootopia";
-
-    Habitante habitante;
 
 
     @Override
@@ -49,14 +50,14 @@ public class Individual extends AppCompatActivity {
 
 
 
-        //obtenerDatos();
+        obtenerDatos();
 
 
     }
 
 
 
-    /*public void obtenerDatos(){
+    public void obtenerDatos(){
         ZootopiaServices service = retrofit.create(ZootopiaServices.class);
         final Call<ZootopiaResponse> zResponseCall = service.getListaHabitantes();
 
@@ -79,5 +80,5 @@ public class Individual extends AppCompatActivity {
                 //cargar = true;
                 Log.e(TAG, "onFailure: " + t.getMessage());
             }});
-    }*/
+    }
 }

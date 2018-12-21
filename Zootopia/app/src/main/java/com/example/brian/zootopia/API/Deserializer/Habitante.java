@@ -75,7 +75,7 @@ public class Habitante {
 
 
 
-        return checarId();
+        return image;
     }
 
     public String getLast() {

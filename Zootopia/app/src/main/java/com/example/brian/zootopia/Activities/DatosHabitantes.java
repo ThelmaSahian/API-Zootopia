@@ -129,8 +129,7 @@ public class DatosHabitantes extends AppCompatActivity  {
     }
 
 
-
-   public void obtenerDatos(){
+   private void obtenerDatos(){
        ZootopiaServices service = retrofit.create(ZootopiaServices.class);
        Call<ZootopiaResponse> zResponseCall = service.getListaHabitantes();
 

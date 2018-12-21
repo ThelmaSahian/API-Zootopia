@@ -40,15 +40,11 @@ public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.ViewHolder>{
         holder.nombreTextView.setText(habitante.getFirst() + " " + habitante.getLast());
 
         Glide.with(context)
-                .load(habitante.checarId())
+                .load(habitante.getImage())
                 .centerCrop()
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.fotoImageView);
-
-
-
-
     }
 
     @Override
